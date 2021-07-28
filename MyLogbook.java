@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class MyLogbook {
 	MyLogbook() {
 		System.out.println("My Logbook application\n" +
@@ -6,16 +8,16 @@ public class MyLogbook {
 							"2, Thistlegorm, Egypt, 38, 26, Pejsebela, air\n" +
 							"3, Rury kopalni Wapienniki, Poland, 59, 6, Bartek, nitrox\n" +
 							"4, Um el Faroud, Malta, 45, 33, Grzesiek, air\n");
-							
-		Dive dive1 = new Dive(1, "Temple", "Egypt", 55, 19, "Bartek", "air");
-		Dive dive2 = new Dive(2, "Thistlegorm", "Egypt", 38, 26, "Pejsebela", "air");
-		Dive dive3 = new Dive(3, "Rury kopalni Wapienniki", "Poland", 59, 6, "Bartek", "nitrox");
-		Dive dive4 = new Dive(4, "Um el Faroud", "Malta", 45, 33, "Grzesiek", "air");
 		
+		ArrayList<Dive> allDives = new ArrayList<>();
+		allDives.add(new Dive(1, "Temple", "Egypt", 55, 19, "Bartek", "air"));
+		allDives.add(new Dive(2, "Thistlegorm", "Egypt", 38, 26, "Pejsebela", "air"));
+		allDives.add(new Dive(3, "Rury kopalni Wapienniki", "Poland", 59, 6, "Bartek", "nitrox"));
+		allDives.add(new Dive(4, "Um el Faroud", "Malta", 45, 33, "Grzesiek", "air"));		
+	
 		System.out.println();
-		System.out.println(dive1);
-		System.out.println(dive2);
-		System.out.println(dive3);
-		System.out.println(dive4);
+		for(Dive dive : allDives) {
+			System.out.println(dive);
+		}
 	}
 }
