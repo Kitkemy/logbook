@@ -143,16 +143,7 @@ public class MyLogbook {
 				}
 			}
 			
-			String gasReference = "air";
-			String gasOut;
-			
-			if(inGas.equals(gasReference)) {
-				gasOut = "AIR";
-			} else {
-				gasOut = "NITROX";
-			}
-			
-			allDives.add(new Dive(inNumberDive, inPlace, inCountry, inDiveTime, inMaxDeep, inBuddy, Gas.valueOf(gasOut)));
+			allDives.add(new Dive(inNumberDive, inPlace, inCountry, inDiveTime, inMaxDeep, inBuddy, Gas.valueOfString(inGas)));
 			contentBuilder.append(currentLine).append("\n");
 		}
 	}
