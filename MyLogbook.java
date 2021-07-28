@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.FileReader;
+import java.lang.StringBuilder;
 
 public class MyLogbook {
 	ArrayList<Dive> allDives = new ArrayList<>();
@@ -67,10 +69,10 @@ public class MyLogbook {
 	}
 	
 	public void addFirstArrayList(ArrayList<Dive> dive) {
-		allDives.add(new Dive(1, "Temple", "Egypt", 55, 19, "Bartek", "air"));
-		allDives.add(new Dive(2, "Thistlegorm", "Egypt", 38, 26, "Pejsebela", "air"));
-		allDives.add(new Dive(3, "Rury kopalni Wapienniki", "Poland", 59, 6, "Bartek", "nitrox"));
-		allDives.add(new Dive(4, "Um el Faroud", "Malta", 45, 33, "Grzesiek", "air"));
+		allDives.add(new Dive(1, "Temple", "Egypt", 55, 19, "Bartek", Gas.AIR));
+		allDives.add(new Dive(2, "Thistlegorm", "Egypt", 38, 26, "Pejsebela", Gas.AIR));
+		allDives.add(new Dive(3, "Rury kopalni Wapienniki", "Poland", 59, 6, "Bartek", Gas.NITROX));
+		allDives.add(new Dive(4, "Um el Faroud", "Malta", 45, 33, "Grzesiek", Gas.AIR));
 	}
 	
 	public void readArrayList(ArrayList<Dive> allDives) {
@@ -104,7 +106,76 @@ public class MyLogbook {
 		writer.close();
 	}
 	
-	private void updateArrayListFromFile(ArrayList<Dive> allDives, String fileName) {
+	private void updateArrayListFromFile(ArrayList<Dive> allDives, String fileName) throws IOException  {
+		allDives.clear();
+		StringBuilder contentBuilder = new StringBuilder();
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		String currentLine;
+		System.out.println("\nRead data from file to write ArrayList");
+		int inNumberDive = 0;
+		String inPlace = "";
+		String inCountry = "";
+		int inDiveTime = 0;
+		int inMaxDeep = 0;
+		String inBuddy = "";
+		String inGas = "";
 		
-	}	
+		while((currentLine = br.readLine()) != null) {
+			String[] arrSplit = currentLine.split(", ");
+			
+			
+			for(int i = 0;i < arrSplit.length;i++) {
+				
+				if(i == 0) {
+					inNumberDive = Integer.parseInt(arrSplit[i]);
+				} else if(i == 1) {
+					inPlace = arrSplit[i];
+				} else if(i == 2) {
+					inCountry = arrSplit[i];
+				} else if(i == 3) {
+					inDiveTime = Integer.parseInt(arrSplit[i]);
+				} else if(i == 4) {
+					inMaxDeep = Integer.parseInt(arrSplit[i]);
+				} else if(i == 5) {
+					inBuddy = arrSplit[i];
+				} else if(i == 6) {
+					inGas = arrSplit[i];
+				}
+			}
+			
+			String gasReference = "air";
+			String gasOut;
+			
+			if(inGas.equals(gasReference)) {
+				gasOut = "AIR";
+			} else {
+				gasOut = "NITROX";
+			}
+			
+			allDives.add(new Dive(inNumberDive, inPlace, inCountry, inDiveTime, inMaxDeep, inBuddy, Gas.valueOf(gasOut)));
+			contentBuilder.append(currentLine).append("\n");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

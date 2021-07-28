@@ -5,9 +5,9 @@ class Dive {
 	int diveTime;
 	int maxDeep;
 	String buddy;
-	String gas;
+	Gas gas;
 	
-	Dive(int numberDive, String place, String country, int diveTime, int maxDeep, String buddy, String gas) {
+	Dive(int numberDive, String place, String country, int diveTime, int maxDeep, String buddy, Gas gas) {
 		this.numberDive = numberDive;
 		this.place = place;
 		this.country = country;
@@ -41,7 +41,7 @@ class Dive {
 		return buddy;
 	}
 	
-	public String getGas() {
+	public Gas getGas() {
 		return gas;
 	}
 	

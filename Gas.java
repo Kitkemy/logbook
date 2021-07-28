@@ -1,0 +1,4 @@
+enum Gas {
+	AIR,
+	NITROX
+}
