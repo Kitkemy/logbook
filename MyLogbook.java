@@ -1,5 +1,5 @@
 public class MyLogbook {
-	public static void main(String args[]) {
+	MyLogbook() {
 		System.out.println("My Logbook application\n" +
 							"foreach loop -> read allDives ArrayList\n" +
 							"1, Temple, Egypt, 55, 19, Bartek, air\n" +
@@ -17,29 +17,5 @@ public class MyLogbook {
 		System.out.println(dive2);
 		System.out.println(dive3);
 		System.out.println(dive4);
-	}
-}
-
-class Dive {
-	int numberDive;
-	String place;
-	String country;
-	int diveTime;
-	int maxDeep;
-	String buddy;
-	String gas;
-	
-	Dive(int numberDive, String place, String country, int diveTime, int maxDeep, String buddy, String gas) {
-		this.numberDive = numberDive;
-		this.place = place;
-		this.country = country;
-		this.diveTime = diveTime;
-		this.maxDeep = maxDeep;
-		this.buddy = buddy;
-		this.gas = gas;
-	}
-	
-	public String toString() {
-		return numberDive + ", " + place + ", " + country + ", " + diveTime + ", " + maxDeep + ", " + buddy + ", " + gas;
 	}
 }
