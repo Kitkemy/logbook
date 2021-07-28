@@ -146,27 +146,5 @@ public class MyLogbook {
 			allDives.add(new Dive(inNumberDive, inPlace, inCountry, inDiveTime, inMaxDeep, inBuddy, Gas.valueOfString(inGas)));
 			contentBuilder.append(currentLine).append("\n");
 		}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 }
