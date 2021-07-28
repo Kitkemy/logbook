@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class MyLogbook {
 	ArrayList<Dive> allDives = new ArrayList<>();
@@ -37,11 +38,13 @@ public class MyLogbook {
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 					System.out.println("Wczytanie danych z pliku do ArrayList");
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+					updateArrayListFromFile(allDives, "MyLogbook.dat");
 					break;
 				case 3:
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 					System.out.println("Zapisanie danych z ArrayList do pliku");
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+					writeFileFromArrayList(allDives, "MyLogbook.dat");
 					break;
 				case 4:
 					System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
@@ -76,4 +79,32 @@ public class MyLogbook {
 			System.out.println(dive);
 		}
 	}
+	
+	private void writeFileFromArrayList(ArrayList<Dive> allDives, String fileName) throws IOException {
+		PrintWriter writer = new PrintWriter(fileName, "UTF-8");
+		
+		for(int i = 0;i < allDives.size();i++) {
+			Dive dive = allDives.get(i);
+			StringBuffer sb = new StringBuffer();
+			sb.append(dive.getNumberDive());
+			sb.append(", ");
+			sb.append(dive.getPlace());
+			sb.append(", ");
+			sb.append(dive.getCountry());
+			sb.append(", ");
+			sb.append(dive.getDiveTime());
+			sb.append(", ");
+			sb.append(dive.getMaxDeep());
+			sb.append(", ");
+			sb.append(dive.getBuddy());
+			sb.append(", ");
+			sb.append(dive.getGas());
+			writer.println(sb);
+		}
+		writer.close();
+	}
+	
+	private void updateArrayListFromFile(ArrayList<Dive> allDives, String fileName) {
+		
+	}	
 }
